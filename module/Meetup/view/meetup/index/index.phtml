@@ -1,0 +1,62 @@
+<div class="jumbotron">
+    <h1>List of <span class="zf-green">Meetups</span></h1>
+
+    <p>
+        Here you can found the hole list of Meetups
+    <ul>
+        <li>
+            You can add a new one
+        </li>
+        <li>
+            Edit an existing one
+        </li>
+        <li>
+            Or, delete one
+        </li>
+    </ul>
+    </p>
+
+    <p><a href="<?= $this->url('meetup/add'); ?>" class="btn btn-success btn-lg">Add a new Meetup</a></p>
+</div>
+
+<div>
+    <?php if (sizeof($this->meetup) > 0): ?>
+        <div class="row">
+            <?php foreach ($this->meetup as $meetup): ?>
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2 class="panel-title" style="text-transform: uppercase; text-align: center; color:#ffffff;">
+                                <a type="button" href="<?= 'meetup/detail/' . $meetup->getId(); ?>"
+                                   class="btn btn-info btn-lg">
+                                    <?= $meetup->getTitle() ?>
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="panel-body">
+                            <div class="dates">
+                                <h4 class="zf-green"><?= $meetup->getDateDebut() ?></h4>
+                                <h4 class="zf-red"><?= $meetup->getDateFin() ?></h4>
+                            </div>
+                            <div class="description">
+                                <?= $meetup->getDescription() ?>
+                            </div>
+                        </div>
+                        <div class="panel-footer" style="text-align: center">
+                            <a type="button" href="<?= 'meetup/update/' . $meetup->getId(); ?>"
+                               class="btn btn-warning btn-sm">Update</a>
+                            <a type="button" href="<?= 'meetup/remove/' . $meetup->getId(); ?>"
+                               class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+
+        </div>
+    <?php else: ?>
+        <div>
+            <div class="alert alert-warning" role="alert">No existing Meetup. Be the first to create a new Meetup !
+            </div>
+        </div>
+    <?php endif; ?>
+</div>

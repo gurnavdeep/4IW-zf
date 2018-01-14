@@ -1,0 +1,35 @@
+<h1>Details of Meetup</h1>
+<p class="lead">Here is the resume of the Meetup</p>
+
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h3 style="text-align: center"><?= $this->meetup->getTitle() ?></h3>
+
+            <ul class="detail_date_list">
+                <li>
+                    Begins on <p class="lead"><?= $this->meetup->getDateDebut() ?></p>
+                </li>
+                <li>
+                    Finish on <p class="lead"><?= $this->meetup->getDateFin() ?></p>
+                </li>
+            </ul>
+
+            <div class="description container">
+                <h3>Description</h3>
+                <blockquote>
+                    <p><?= $this->meetup->getDescription() ?></p>
+                </blockquote>
+
+                <div id="actions">
+                    <a type="button" href="<?= '/meetup/update/' . $this->meetup->getId(); ?>"
+                       class="btn btn-warning btn-lg">Update</a>
+                    <a type="button" href="<?= '/meetup/remove/' . $this->meetup->getId(); ?>"
+                       class="btn btn-danger btn-lg">Delete</a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
